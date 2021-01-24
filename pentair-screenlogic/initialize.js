@@ -4,7 +4,22 @@ const ScreenLogic = require('./index');
 
 var screenLogic_ip = process.env.SCREENLOGICIP;
 
-connect(new ScreenLogic.UnitConnection(80, screenLogic_ip));
+// use this to remote connect to a system by name (going through the Pentair servers)
+const systemName = 'Pentair: '+ process.env.SYSTEMNAME;
+const password = process.env.SYSTEMPASSWORD;
+
+var remote = new ScreenLogic.RemoteLogin(systemName);
+remote.on('gatewayFound', function(unit) {
+  remote.close();
+  if (unit && unit.gatewayFound) {
+    console.log('unit ' + remote.systemName + ' found at ' + unit.ipAddr + ':' + unit.port);
+    connect(new ScreenLogic.UnitConnection(unit.port, unit.ipAddr, password));
+  } else {
+    console.log('no unit found by that name');
+  }
+});
+
+remote.connect();
 
 // generic connection method used by all above examples
 function connect(client) {
