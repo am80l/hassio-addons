@@ -5,7 +5,7 @@ const ScreenLogic = require('./index');
 var myArgs = process.argv.slice(2);
 
 // use this to remote connect to a system by name (going through the Pentair servers)
-const systemName = 'Pentair: '+ myArgs[1];
+const systemName = 'Foobar: '+ myArgs[1];
 const password = myArgs[2];
 var remote = new ScreenLogic.RemoteLogin(systemName);
 remote.on('gatewayFound', function(unit) {
