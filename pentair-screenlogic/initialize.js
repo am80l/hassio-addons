@@ -2,8 +2,6 @@
 
 const ScreenLogic = require('./index');
 
-var screenLogic_ip = process.env.SCREENLOGICIP;
-
 // use this to remote connect to a system by name (going through the Pentair servers)
 const systemName = 'Pentair: '+ process.env.SYSTEMNAME;
 const password = process.env.SYSTEMPASSWORD;
