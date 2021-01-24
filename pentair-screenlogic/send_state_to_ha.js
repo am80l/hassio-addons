@@ -11,7 +11,6 @@ var remote = new ScreenLogic.RemoteLogin(systemName);
 remote.on('gatewayFound', function(unit) {
   remote.close();
   if (unit && unit.gatewayFound) {
-    console.log('unit ' + remote.systemName + ' found at ' + unit.ipAddr + ':' + unit.port);
     connect(new ScreenLogic.UnitConnection(unit.port, unit.ipAddr, password));
   } else {
     console.log('no unit found by that name');
