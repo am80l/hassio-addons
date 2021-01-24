@@ -7,6 +7,8 @@ MQTTPORT=$(jq --raw-output ".MQTT_port" $CONFIG_PATH)
 MQTTUSER=$(jq --raw-output ".MQTT_user" $CONFIG_PATH)
 MQTTPASS=$(jq --raw-output ".MQTT_password" $CONFIG_PATH)
 export SCREENLOGICIP=$(jq --raw-output ".ScreenLogic_server" $CONFIG_PATH)
+export SYSTEMNAME=$(jq --raw-output ".SystemName" $CONFIG_PATH)
+export SYSTEMPASSWORD=$(jq --raw-output ".SystemPassword" $CONFIG_PATH)
 
 cd /node_modules/node-screenlogic
 
