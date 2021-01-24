@@ -12,7 +12,7 @@
     "MQTT_port": "1883",
     "MQTT_user": "hassio",
     "MQTT_password": "hassio",
-    "SystemName": "xx-xx-xx"
+    "SystemName": "xx-xx-xx",
     "SystemPassword": "*"
   },
   "schema": {
@@ -20,7 +20,7 @@
     "MQTT_port": "str",
     "MQTT_user": "str",
     "MQTT_password": "str",
-    "SystemName": "str"
+    "SystemName": "str",
     "SystemPassword": "str"
   }
 }
