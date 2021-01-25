@@ -24,7 +24,9 @@ remote.connect();
 function connect(client, circuit, onoff) {
   client.on('loggedIn', function() {
     console.log('login successful, setting circuit');
-    let setCircuit = async () => this.setCircuitState(0, circuit, onoff);
+    async function setCircuit() { 
+      await this.setCircuitState(0, circuit, onoff);
+    }
     setCircuit().then(client.close());
     // setTimeout(() => {  client.close(); }, 5000);
      
