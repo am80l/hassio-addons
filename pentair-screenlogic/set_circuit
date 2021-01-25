@@ -24,8 +24,7 @@ remote.connect();
 function connect(client, circuit, onoff) {
   client.on('loggedIn', function() {
     this.setCircuitState(0, circuit, onoff);
-  });
-  client.on('circuitStateChanged ', function() {
+  }).on('circuitStateChanged ', function() {
     client.close();
   }); 
 
