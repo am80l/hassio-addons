@@ -21,7 +21,6 @@ remote.on('gatewayFound', function(unit) {
 
 remote.connect();
 
-
 function connect(client, heater, onoff) {
   client.on('loggedIn', function() {
 // Turn Heater for Pool or Spa on or Off.
@@ -30,8 +29,11 @@ function connect(client, heater, onoff) {
   }else if (onoff ==0) {
     this.setHeatMode(0, heater, 0);
   }
+  }).on('circuitStateChanged', function() {
     client.close();
-  });
+  }).on('error', function(err) {
+   console.log(err);
+  }); ;
 
   client.connect();
 }
