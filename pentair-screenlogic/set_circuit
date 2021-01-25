@@ -24,14 +24,12 @@ remote.connect();
 function connect(client, circuit, onoff) {
   client.on('loggedIn', function() {
     console.log('login successful, setting circuit');
-    async function setCircuit() { 
-      await client.setCircuitState(0, circuit, onoff);
-    }
-    setCircuit().then(client.close());
-    // setTimeout(() => {  client.close(); }, 5000);
-     
+    client.setCircuitState(0, circuit, onoff);
+    // setTimeout(() => {  client.close(); }, 5000);     
   }).on('circuitStateChanged', function(circuit) {
+    console.log(circuit);
     console.log('circuitId '+ circuit.circuitId + ' on controller ' + circuit.controllerId + ' changed to ' + circuit.circuitState);
+    client.close();
   }).on('error', function(err) {
    console.log(err);
   }); 
