@@ -29,7 +29,10 @@ function connect(client, poolOrSpa, level) {
       this.setSaltCellOutput(0, level, saltCellConfig.level2);
     else
       this.setSaltCellOutput(0, saltCellConfig.level1, level);
+  }).on('setSaltCellConfig', function(circuit) {
     client.close();
+  }).on('error', function(err) {
+   console.log(err);
   });
 
   client.connect();
