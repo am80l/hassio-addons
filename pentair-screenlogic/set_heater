@@ -29,7 +29,7 @@ function connect(client, heater, onoff) {
   }else if (onoff ==0) {
     this.setHeatMode(0, heater, 0);
   }
-  }).on('circuitStateChanged', function() {
+  }).on('heatModeChanged', function() {
     client.close();
   }).on('error', function(err) {
    console.log(err);
