@@ -25,7 +25,7 @@ function connect(client, circuit, onoff) {
   client.on('loggedIn', function() {
     console.log('login successful, setting circuit');
     async function setCircuit() { 
-      await this.setCircuitState(0, circuit, onoff);
+      await client.setCircuitState(0, circuit, onoff);
     }
     setCircuit().then(client.close());
     // setTimeout(() => {  client.close(); }, 5000);
