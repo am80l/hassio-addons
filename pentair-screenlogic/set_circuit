@@ -24,8 +24,9 @@ remote.connect();
 function connect(client, circuit, onoff) {
   client.on('loggedIn', function() {
     console.log('login successful, setting circuit');
-    this.setCircuitState(0, circuit, onoff);
-    setTimeout(() => {  client.close(); }, 5000);
+    let setCircuit = async () => this.setCircuitState(0, circuit, onoff);
+    setCircuit().then(client.close());
+    // setTimeout(() => {  client.close(); }, 5000);
      
   }).on('circuitStateChanged', function(circuit) {
     console.log('circuitId '+ circuit.circuitId + ' on controller ' + circuit.controllerId + ' changed to ' + circuit.circuitState);
