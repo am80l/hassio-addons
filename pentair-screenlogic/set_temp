@@ -21,12 +21,13 @@ remote.on('gatewayFound', function(unit) {
 
 remote.connect();
 
-
 function connect(client, heater, temp) {
   client.on('loggedIn', function() {
     this.setSetPoint(0, heater, temp);
+  }).on('setPointChanged', function() {
     client.close();
+  }).on('error', function(err) {
+   console.log(err);
   });
-
   client.connect();
 }
