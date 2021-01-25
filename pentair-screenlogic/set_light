@@ -24,7 +24,7 @@ remote.connect();
 function connect(client, command) {
     client.on('loggedIn', function() {
       this.sendLightCommand(0, command);
-    }).on('circuitStateChanged', function(circuit) {
+    }).on('sentLightCommand', function(circuit) {
       client.close();
     }).on('error', function(err) {
      console.log(err);
