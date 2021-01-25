@@ -25,7 +25,7 @@ function connect(client, circuit, onoff) {
   client.on('loggedIn', function() {
     this.setCircuitState(0, circuit, onoff);
     client.close();   
-  }).on('circuitStateChanged ', function(circuit) {
+  }).on('circuitStateChanged'), function(circuit) {
     console.log('circuitId '+ circuit.circuitId + ' on controller ' + circuit.controllerId + ' changed to ' + circuit.circuitState);
   }).on('error'), function(err) {
    console.log(err);
