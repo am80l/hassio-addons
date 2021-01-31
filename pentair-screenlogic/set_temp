@@ -24,6 +24,7 @@ remote.connect();
 function connect(client, heater, temp) {
   client.on('loggedIn', function() {
     this.setSetPoint(0, heater, temp);
+    setTimeout(() => {  client.close(); }, 6000);
   }).on('setPointChanged', function() {
     client.close();
   }).on('error', function(err) {
