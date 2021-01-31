@@ -29,6 +29,7 @@ function connect(client, heater, onoff) {
   }else if (onoff ==0) {
     this.setHeatMode(0, heater, 0);
   }
+  setTimeout(() => {  client.close(); }, 6000);
   }).on('heatModeChanged', function() {
     client.close();
   }).on('error', function(err) {
